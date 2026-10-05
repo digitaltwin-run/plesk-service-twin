@@ -1,0 +1,80 @@
+{
+  "schema": "digitaltwin-run.plesk-account-inventory/v1",
+  "account_id": "prototypowanie",
+  "panel_base_url": "https://prototypowanie.pl:8443",
+  "observe_uri": "plesk://host/account/query/subscriptions",
+  "snapshot_uri": "plesk://host/subscription/query/snapshot",
+  "note": "Secret-free inventory of subscriptions visible to one Plesk account. Credentials stay in Vault (vault_entry_id only). Refresh by observing the account, not by inventing a second connector.",
+  "quality": "observed-seed",
+  "subscriptions": [
+    {
+      "subscription_name": "prototypowanie.pl",
+      "customer_login_vault_entry_id": "plesk-subscription",
+      "domains": [
+        {
+          "name": "prototypowanie.pl",
+          "role": "primary",
+          "docroot": "/var/www/vhosts/prototypowanie.pl/httpdocs",
+          "vault_refs": {
+            "sftp": "plesk-sftp-prototypowanie-pl",
+            "ftp": "plesk-ftp-prototypowanie-pl"
+          }
+        }
+      ]
+    },
+    {
+      "subscription_name": "subactor.com",
+      "customer_login_vault_entry_id": "plesk-subscription",
+      "domains": [
+        {
+          "name": "subactor.com",
+          "role": "primary",
+          "docroot": "/var/www/vhosts/subactor.com/httpdocs",
+          "vault_refs": {
+            "sftp": "plesk-sftp-subactor-com",
+            "ftp": "plesk-ftp-subactor-com"
+          }
+        },
+        {
+          "name": "founder.subactor.com",
+          "role": "subdomain",
+          "docroot": "/var/www/vhosts/subactor.com/founder.subactor.com/httpdocs",
+          "vault_refs": {
+            "sftp": "plesk-sftp-founder-subactor-com",
+            "ftp": "plesk-ftp-founder-subactor-com"
+          }
+        }
+      ]
+    },
+    {
+      "subscription_name": "sub.actor",
+      "customer_login_vault_entry_id": "plesk-subscription",
+      "domains": [
+        {
+          "name": "sub.actor",
+          "role": "primary",
+          "docroot": "/var/www/vhosts/sub.actor/httpdocs",
+          "vault_refs": {
+            "sftp": "plesk-sftp-sub-actor",
+            "ftp": "plesk-ftp-sub-actor"
+          }
+        }
+      ]
+    },
+    {
+      "subscription_name": "obslugabiurowa.pl",
+      "customer_login_vault_entry_id": "plesk-subscription",
+      "domains": [
+        {
+          "name": "obslugabiurowa.pl",
+          "role": "primary",
+          "docroot": "/httpdocs",
+          "vault_refs": {
+            "sftp": "plesk-sftp-obslugabiurowa-pl",
+            "ftp": "plesk-ftp-obslugabiurowa-pl"
+          }
+        }
+      ]
+    }
+  ]
+}

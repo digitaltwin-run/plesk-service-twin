@@ -1,0 +1,400 @@
+{
+  "schema": "subactor.nodes/v1",
+  "meta": {
+    "headline": "Nodes / Urządzenia",
+    "subheadline": "Dodaj fizyczny lub programowy punkt wykonawczy i przypisz go do domeny swojej organizacji.",
+    "readiness_title": "Najpierw gotowość, potem polecenie",
+    "readiness_note": "Pozycja w katalogu nie oznacza aktywnego urządzenia. Node może wykonać polecenie dopiero po przejściu: online → enrolled → routable → compatible → ready oraz po zgodzie policy gate.",
+    "status_labels": {
+      "available": "Dostępny instalator",
+      "pilot": "Pilotaż",
+      "planned": "W planach"
+    },
+    "labels": {
+      "tenant": "Domena organizacji",
+      "identity": "Tożsamość node'a",
+      "routes": "Kontrakt URI",
+      "platforms": "Platformy",
+      "capabilities": "Możliwości",
+      "install": "Instalacja",
+      "docs": "Dokumentacja",
+      "enrolled": "Moje urządzenia",
+      "add": "Dodaj do systemu",
+      "name": "Nazwa node'a",
+      "endpoint": "Lokalny endpoint HTTP(S)",
+      "enroll": "Utwórz enrollment",
+      "refresh": "Odśwież stan",
+      "probe": "Sprawdź node",
+      "probing": "Sprawdzam…",
+      "remove": "Usuń",
+      "last_seen": "Ostatni heartbeat lub probe",
+      "last_probe": "Ostatnie sprawdzenie",
+      "probe_error": "Błąd sprawdzenia",
+      "probe_private_ip_error": "Ten zapis używa nazwy hosta. Aby sprawdzić go z portalu, zapisz endpoint z prywatnym adresem IP albo korzystaj z heartbeat.",
+      "probe_failed": "Node nie odpowiedział poprawnie na bezpieczny odczyt",
+      "probe_hint": "Sprawdzenie odczytuje tylko /health i /routes z zapisanego prywatnego adresu IP. Nie wykonuje poleceń i nie skanuje sieci.",
+      "endpoint_hint": "Możesz zapisać prywatne IP, localhost, nazwę jednolabelową lub .local. Aktywne sprawdzenie z portalu wymaga liczbowego prywatnego IP; nazwy hostów nadal mogą wysyłać heartbeat.",
+      "source": "Źródło obserwacji",
+      "view_label": "Widok urządzeń",
+      "view_cards": "Panele",
+      "view_list": "Lista",
+      "view_table": "Tabela",
+      "details": "Szczegóły",
+      "column_node": "Urządzenie",
+      "column_status": "Status",
+      "column_actions": "Akcje",
+      "readiness": "Gotowość",
+      "empty": "Nie dodano jeszcze żadnego urządzenia.",
+      "token_title": "Jednorazowy token enrollment",
+      "token_note": "Skopiuj go teraz. Portal zapisuje wyłącznie hash i nie pokaże tokenu ponownie."
+    },
+    "translations": {
+      "en": {
+        "headline": "Nodes / Devices",
+        "subheadline": "Add a physical or software execution endpoint and bind it to your organisation's domain.",
+        "readiness_title": "Readiness before execution",
+        "readiness_note": "A catalogue item is not an active device. A node may execute only after online → enrolled → routable → compatible → ready and an approving policy gate.",
+        "status_labels": {
+          "available": "Installer available",
+          "pilot": "Pilot",
+          "planned": "Planned"
+        },
+        "labels": {
+          "tenant": "Organisation domain",
+          "identity": "Node identity",
+          "routes": "URI contract",
+          "platforms": "Platforms",
+          "capabilities": "Capabilities",
+          "install": "Install",
+          "docs": "Documentation",
+          "enrolled": "My devices",
+          "add": "Add to system",
+          "name": "Node name",
+          "endpoint": "Local HTTP(S) endpoint",
+          "enroll": "Create enrollment",
+          "refresh": "Refresh status",
+          "probe": "Check node",
+          "probing": "Checking…",
+          "remove": "Remove",
+          "last_seen": "Last heartbeat or probe",
+          "last_probe": "Last check",
+          "probe_error": "Check error",
+          "probe_private_ip_error": "This entry uses a hostname. To check it from the portal, save an endpoint with a private IP address or keep using heartbeats.",
+          "probe_failed": "The node did not answer the safe read correctly",
+          "probe_hint": "The check only reads /health and /routes from the saved private IP address. It runs no commands and does not scan the network.",
+          "endpoint_hint": "You may save a private IP, localhost, a single-label name or .local. An active portal check requires a numeric private IP; hostnames may still send heartbeats.",
+          "source": "Observation source",
+          "view_label": "Device view",
+          "view_cards": "Cards",
+          "view_list": "List",
+          "view_table": "Table",
+          "details": "Details",
+          "column_node": "Device",
+          "column_status": "Status",
+          "column_actions": "Actions",
+          "readiness": "Readiness",
+          "empty": "No devices have been added yet.",
+          "token_title": "One-time enrollment token",
+          "token_note": "Copy it now. The portal stores only its hash and will not show the token again."
+        }
+      },
+      "de": {
+        "headline": "Nodes / Geräte",
+        "subheadline": "Fügen Sie einen physischen oder softwarebasierten Endpunkt hinzu und binden Sie ihn an Ihre Organisationsdomain.",
+        "readiness_title": "Bereitschaft vor Ausführung",
+        "readiness_note": "Ein Katalogeintrag ist kein aktives Gerät. Ein Node darf erst nach online → enrolled → routable → compatible → ready und einer Freigabe durch das Policy-Gate ausführen.",
+        "status_labels": {
+          "available": "Installer verfügbar",
+          "pilot": "Pilot",
+          "planned": "Geplant"
+        },
+        "labels": {
+          "tenant": "Organisationsdomain",
+          "identity": "Node-Identität",
+          "routes": "URI-Vertrag",
+          "platforms": "Plattformen",
+          "capabilities": "Funktionen",
+          "install": "Installieren",
+          "docs": "Dokumentation",
+          "enrolled": "Meine Geräte",
+          "add": "Zum System hinzufügen",
+          "name": "Node-Name",
+          "endpoint": "Lokaler HTTP(S)-Endpunkt",
+          "enroll": "Enrollment erstellen",
+          "refresh": "Status aktualisieren",
+          "probe": "Node prüfen",
+          "probing": "Prüfung läuft…",
+          "remove": "Entfernen",
+          "last_seen": "Letzter Heartbeat oder Probe",
+          "last_probe": "Letzte Prüfung",
+          "probe_error": "Prüffehler",
+          "probe_private_ip_error": "Dieser Eintrag verwendet einen Hostnamen. Speichern Sie für die Portalprüfung einen Endpunkt mit privater IP-Adresse oder verwenden Sie weiterhin Heartbeats.",
+          "probe_failed": "Der Node hat auf den sicheren Lesezugriff nicht korrekt geantwortet",
+          "probe_hint": "Die Prüfung liest nur /health und /routes von der gespeicherten privaten IP-Adresse. Sie führt keine Befehle aus und scannt das Netzwerk nicht.",
+          "endpoint_hint": "Sie können eine private IP, localhost, einen einteiligen Namen oder .local speichern. Eine aktive Portalprüfung erfordert eine numerische private IP; Hostnamen können weiterhin Heartbeats senden.",
+          "source": "Beobachtungsquelle",
+          "view_label": "Geräteansicht",
+          "view_cards": "Karten",
+          "view_list": "Liste",
+          "view_table": "Tabelle",
+          "details": "Details",
+          "column_node": "Gerät",
+          "column_status": "Status",
+          "column_actions": "Aktionen",
+          "readiness": "Bereitschaft",
+          "empty": "Noch keine Geräte hinzugefügt.",
+          "token_title": "Einmaliges Enrollment-Token",
+          "token_note": "Jetzt kopieren. Das Portal speichert nur den Hash und zeigt das Token nicht erneut an."
+        }
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "cybermysz-hardware",
+      "name": "CyberMysz Hardware",
+      "category": "USB + kamera",
+      "status": "pilot",
+      "icon": "plug",
+      "summary": "Fizyczny node steruje dowolnym sprzętem przez USB HID, a ekran obserwuje kamerą — bez instalowania agenta na kontrolowanym urządzeniu.",
+      "platforms": ["USB HID", "RP2040", "Raspberry Pi", "kamera"],
+      "capabilities": [
+        "Skanowanie ekranu przez kamerę",
+        "Mysz i klawiatura przez USB HID",
+        "STOP, limity akcji, receipt i weryfikacja"
+      ],
+      "required_schemes": ["capture", "hid"],
+      "node_uri": "node://cybermysz-hw-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "capture://camera.cybermysz-hw-01.{tenant_domain}/frame",
+        "policy://cybermysz-hardware-safe/v1",
+        "hid://usb.cybermysz-hw-01.{tenant_domain}/action",
+        "trace://cybermysz-hw-01.{tenant_domain}/execution"
+      ],
+      "install_url": "https://cybermysz.pl/index.php#zamowienie",
+      "docs_url": "https://cybermysz.pl/",
+      "cta": "Zamów CyberMysz",
+      "translations": {
+        "en": {
+          "category": "USB + camera",
+          "summary": "A physical node controls any device over USB HID and observes its display with a camera, without installing an agent on the controlled device.",
+          "capabilities": ["Camera screen capture", "USB HID mouse and keyboard", "STOP, action limits, receipt and verification"],
+          "cta": "Order CyberMysz"
+        },
+        "de": {
+          "category": "USB + Kamera",
+          "summary": "Ein physischer Node steuert jedes Gerät per USB HID und erfasst dessen Bildschirm mit einer Kamera, ohne Agenteninstallation auf dem Zielgerät.",
+          "capabilities": ["Bildschirmerfassung per Kamera", "USB-HID-Maus und -Tastatur", "STOP, Aktionslimits, Beleg und Verifizierung"],
+          "cta": "CyberMysz bestellen"
+        }
+      }
+    },
+    {
+      "id": "cybermysz-software",
+      "name": "CyberMysz Software",
+      "category": "Agent programowy",
+      "status": "available",
+      "icon": "cube",
+      "summary": "Programowy odpowiednik urządzenia: przechwytuje ekran i wykonuje zatwierdzone akcje lokalnie na komputerze, z tym samym kontraktem bezpieczeństwa.",
+      "platforms": ["Linux", "Windows", "macOS"],
+      "capabilities": [
+        "Lokalny capture ekranu",
+        "Sterowanie programowe lub HID",
+        "Tryb armed, STOP, policy gate i trace"
+      ],
+      "required_schemes": ["capture", "hid"],
+      "node_uri": "node://cybermysz-sw-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "capture://desktop.cybermysz-sw-01.{tenant_domain}/frame",
+        "policy://cybermysz-software-safe/v1",
+        "hid://software.cybermysz-sw-01.{tenant_domain}/action",
+        "trace://cybermysz-sw-01.{tenant_domain}/execution"
+      ],
+      "install_url": "https://cybermysz.pl/wdrozenie.php",
+      "docs_url": "https://cybermysz.pl/marketplace.php",
+      "cta": "Wdróż CyberMysz Software",
+      "translations": {
+        "en": {
+          "category": "Software agent",
+          "summary": "The software counterpart captures the screen and performs approved actions locally on a computer with the same safety contract.",
+          "capabilities": ["Local screen capture", "Software or HID control", "Armed mode, STOP, policy gate and trace"],
+          "cta": "Deploy CyberMysz Software"
+        },
+        "de": {
+          "category": "Software-Agent",
+          "summary": "Die Softwarevariante erfasst den Bildschirm und führt genehmigte Aktionen lokal auf einem Computer mit demselben Sicherheitsvertrag aus.",
+          "capabilities": ["Lokale Bildschirmerfassung", "Software- oder HID-Steuerung", "Armed-Modus, STOP, Policy-Gate und Trace"],
+          "cta": "CyberMysz Software bereitstellen"
+        }
+      }
+    },
+    {
+      "id": "linux-nas",
+      "name": "Linux / NAS Node",
+      "category": "Serwer i magazyn danych",
+      "status": "pilot",
+      "icon": "server",
+      "summary": "Node dla serwera Linux lub NAS uruchamiany natywnie albo w kontenerze. Zgodność zależy od modelu NAS i dostępnych usług systemowych.",
+      "platforms": ["Linux", "Synology", "QNAP", "TrueNAS", "Docker"],
+      "capabilities": ["Uruchamianie modułów i konektorów", "Health i route discovery", "Plan/apply oraz raport driftu"],
+      "required_schemes": ["node"],
+      "node_uri": "node://nas-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "node://nas-01.{tenant_domain}/runtime/query/routes",
+        "node://nas-01.{tenant_domain}/runtime/command/connectors-apply",
+        "trace://nas-01.{tenant_domain}/deployment"
+      ],
+      "install_url": "https://get.urirun.com/",
+      "docs_url": "https://github.com/if-uri/urirun-node",
+      "cta": "Otwórz instalator node",
+      "translations": {
+        "en": {"category": "Server and storage", "summary": "A Linux server or NAS node running natively or in a container. Compatibility depends on the NAS model and available system services.", "capabilities": ["Run modules and connectors", "Health and route discovery", "Plan/apply and drift reporting"], "cta": "Open node installer"},
+        "de": {"category": "Server und Speicher", "summary": "Ein Linux-Server- oder NAS-Node, der nativ oder im Container läuft. Die Kompatibilität hängt vom NAS-Modell und den verfügbaren Systemdiensten ab.", "capabilities": ["Module und Konnektoren ausführen", "Health- und Routenerkennung", "Plan/Apply und Drift-Bericht"], "cta": "Node-Installer öffnen"}
+      }
+    },
+    {
+      "id": "raspberry-pi",
+      "name": "Raspberry Pi / Edge Node",
+      "category": "Edge computing",
+      "status": "available",
+      "icon": "cube",
+      "summary": "Lekki node przy urządzeniach, kamerach i magistralach lokalnych. Instalator może skonfigurować usługę użytkownika i wybrane konektory.",
+      "platforms": ["Raspberry Pi OS", "Debian", "Ubuntu", "ARM64"],
+      "capabilities": ["Lokalne moduły i konektory", "Kamery, USB i GPIO przez adaptery", "Zdalny health bez ujawniania sekretów"],
+      "required_schemes": ["node"],
+      "node_uri": "node://edge-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "node://edge-01.{tenant_domain}/runtime/query/routes",
+        "node://edge-01.{tenant_domain}/runtime/command/connectors-apply",
+        "trace://edge-01.{tenant_domain}/deployment"
+      ],
+      "install_url": "https://get.urirun.com/",
+      "docs_url": "https://github.com/if-uri/urirun-node",
+      "cta": "Zainstaluj Edge Node",
+      "translations": {
+        "en": {"category": "Edge computing", "summary": "A lightweight node located near devices, cameras and local buses. The installer can configure a user service and selected connectors.", "capabilities": ["Local modules and connectors", "Camera, USB and GPIO through adapters", "Remote health without exposing secrets"], "cta": "Install Edge Node"},
+        "de": {"category": "Edge Computing", "summary": "Ein schlanker Node nahe an Geräten, Kameras und lokalen Bussen. Der Installer kann einen Benutzerdienst und ausgewählte Konnektoren konfigurieren.", "capabilities": ["Lokale Module und Konnektoren", "Kamera, USB und GPIO über Adapter", "Remote-Health ohne Preisgabe von Secrets"], "cta": "Edge Node installieren"}
+      }
+    },
+    {
+      "id": "windows-node",
+      "name": "Windows Node",
+      "category": "Komputer użytkownika",
+      "status": "available",
+      "icon": "grid",
+      "summary": "Node instalowany jako zadanie systemowe na komputerze Windows, gotowy do uruchamiania lokalnych modułów i konektorów Subactor.",
+      "platforms": ["Windows 10", "Windows 11", "Windows Server"],
+      "capabilities": ["Instalacja przez PowerShell", "Automatyczny start", "Health, routes i logi node'a"],
+      "required_schemes": ["node"],
+      "node_uri": "node://windows-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "node://windows-01.{tenant_domain}/runtime/query/routes",
+        "node://windows-01.{tenant_domain}/runtime/query/log",
+        "trace://windows-01.{tenant_domain}/deployment"
+      ],
+      "install_url": "https://get.urirun.com/",
+      "docs_url": "https://github.com/if-uri/urirun-node",
+      "cta": "Zainstaluj Windows Node",
+      "translations": {
+        "en": {"category": "User computer", "summary": "A node installed as a scheduled system task on Windows, ready to run local Subactor modules and connectors.", "capabilities": ["PowerShell installation", "Automatic startup", "Node health, routes and logs"], "cta": "Install Windows Node"},
+        "de": {"category": "Benutzercomputer", "summary": "Ein als Systemaufgabe unter Windows installierter Node zum Ausführen lokaler Subactor-Module und -Konnektoren.", "capabilities": ["PowerShell-Installation", "Automatischer Start", "Node-Health, Routen und Logs"], "cta": "Windows Node installieren"}
+      }
+    },
+    {
+      "id": "macos-node",
+      "name": "macOS Node",
+      "category": "Komputer użytkownika",
+      "status": "available",
+      "icon": "cube",
+      "summary": "Node dla Maca uruchamiany przez launchd, przeznaczony do lokalnych automatyzacji i konektorów wymagających dostępu do komputera.",
+      "platforms": ["macOS", "Apple Silicon", "Intel"],
+      "capabilities": ["Instalacja przez skrypt node", "Usługa launchd", "Lokalne moduły z kontrolą uprawnień"],
+      "required_schemes": ["node"],
+      "node_uri": "node://mac-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "node://mac-01.{tenant_domain}/runtime/query/routes",
+        "node://mac-01.{tenant_domain}/runtime/query/log",
+        "trace://mac-01.{tenant_domain}/deployment"
+      ],
+      "install_url": "https://get.urirun.com/",
+      "docs_url": "https://github.com/if-uri/urirun-node",
+      "cta": "Zainstaluj macOS Node",
+      "translations": {
+        "en": {"category": "User computer", "summary": "A Mac node managed by launchd for local automation and connectors that require computer access.", "capabilities": ["Node script installation", "launchd service", "Local modules with permission control"], "cta": "Install macOS Node"},
+        "de": {"category": "Benutzercomputer", "summary": "Ein von launchd verwalteter Mac-Node für lokale Automatisierungen und Konnektoren mit Rechnerzugriff.", "capabilities": ["Installation per Node-Skript", "launchd-Dienst", "Lokale Module mit Berechtigungskontrolle"], "cta": "macOS Node installieren"}
+      }
+    },
+    {
+      "id": "android-node",
+      "name": "Android Node",
+      "category": "Telefon i tablet",
+      "status": "pilot",
+      "icon": "user",
+      "summary": "Aplikacja node udostępnia stan, trasy i kontrolowane usługi telefonu. Obecne wydanie ma charakter pilotażowy i wymaga jawnej instalacji APK.",
+      "platforms": ["Android 12+", "Telefon", "Tablet", "Termux"],
+      "capabilities": ["Status i discovery tras", "Kontrolowany start/stop Termux", "Lokalny relay dla usług urządzenia"],
+      "required_schemes": ["android"],
+      "node_uri": "node://android-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "android://android-01.{tenant_domain}/app/query/status",
+        "android://android-01.{tenant_domain}/app/query/routes",
+        "android://android-01.{tenant_domain}/termux/command/start"
+      ],
+      "install_url": "https://github.com/if-uri/urirun-android-node-app",
+      "docs_url": "https://github.com/if-uri/urirun-service-android-node",
+      "cta": "Otwórz pilota Android",
+      "translations": {
+        "en": {"category": "Phone and tablet", "summary": "The node app exposes status, routes and controlled phone services. The current release is a pilot and requires explicit APK installation.", "capabilities": ["Status and route discovery", "Controlled Termux start/stop", "Local relay for device services"], "cta": "Open Android pilot"},
+        "de": {"category": "Telefon und Tablet", "summary": "Die Node-App stellt Status, Routen und kontrollierte Telefondienste bereit. Die aktuelle Version ist ein Pilot und erfordert eine explizite APK-Installation.", "capabilities": ["Status- und Routenerkennung", "Kontrollierter Termux-Start/-Stopp", "Lokales Relay für Gerätedienste"], "cta": "Android-Pilot öffnen"}
+      }
+    },
+    {
+      "id": "browser-node",
+      "name": "Browser Relay Node",
+      "category": "Przeglądarka",
+      "status": "pilot",
+      "icon": "grid",
+      "summary": "Relay do automatyzacji zatwierdzonej karty lub udostępnionego ekranu. Capture i control pozostają osobnymi trasami objętymi policy gate.",
+      "platforms": ["Chrome", "Chromium", "Edge", "Linux", "Windows", "macOS"],
+      "capabilities": ["Capture udostępnionego ekranu", "Sterowanie przez CDP lub jawny adapter", "Receipt i weryfikacja po akcji"],
+      "required_schemes": ["capture", "control"],
+      "node_uri": "node://browser-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "capture://browser-screen.browser-01.{tenant_domain}/frame",
+        "policy://browser-control-safe/v1",
+        "control://browser-cdp.browser-01.{tenant_domain}/action"
+      ],
+      "install_url": "https://get.urirun.com/",
+      "docs_url": "https://github.com/if-uri/urirun-node",
+      "cta": "Skonfiguruj relay",
+      "translations": {
+        "en": {"category": "Browser", "summary": "A relay for an approved tab or shared screen. Capture and control remain separate routes protected by a policy gate.", "capabilities": ["Shared-screen capture", "CDP control or an explicit adapter", "Receipt and post-action verification"], "cta": "Configure relay"},
+        "de": {"category": "Browser", "summary": "Ein Relay für einen genehmigten Tab oder freigegebenen Bildschirm. Capture und Control bleiben getrennte, durch ein Policy-Gate geschützte Routen.", "capabilities": ["Erfassung eines freigegebenen Bildschirms", "CDP-Steuerung oder expliziter Adapter", "Beleg und Verifizierung nach der Aktion"], "cta": "Relay konfigurieren"}
+      }
+    },
+    {
+      "id": "mqtt-embedded",
+      "name": "MQTT / Embedded Node",
+      "category": "IoT i automatyka",
+      "status": "planned",
+      "icon": "bolt",
+      "summary": "Planowany most dla sensorów, przekaźników i urządzeń embedded. Temat MQTT będzie trasą transportową, a nie zamiennikiem tożsamości, polityki i audytu node'a.",
+      "platforms": ["MQTT", "ESP32", "RP2040", "Home Assistant", "Node-RED"],
+      "capabilities": ["Publish/subscribe przez broker", "Mapowanie device:// na tematy", "Policy, receipt i trace ponad transportem"],
+      "required_schemes": ["mqtt", "device"],
+      "node_uri": "node://mqtt-edge-01.{tenant_domain}/runtime/query/health",
+      "routes": [
+        "mqtt://broker.{tenant_domain}/topic/command/publish",
+        "device://device-01.{tenant_domain}/command/set",
+        "trace://mqtt-edge-01.{tenant_domain}/execution"
+      ],
+      "install_url": null,
+      "docs_url": "https://connect.ifuri.com/connectors/mqtt",
+      "cta": null,
+      "translations": {
+        "en": {"category": "IoT and automation", "summary": "A planned bridge for sensors, relays and embedded devices. An MQTT topic will be transport, not a substitute for node identity, policy and audit.", "capabilities": ["Broker publish/subscribe", "Map device:// onto topics", "Policy, receipt and trace above transport"]},
+        "de": {"category": "IoT und Automatisierung", "summary": "Eine geplante Bridge für Sensoren, Relais und Embedded-Geräte. Ein MQTT-Topic ist Transport und kein Ersatz für Node-Identität, Policy und Audit.", "capabilities": ["Publish/Subscribe über Broker", "device:// auf Topics abbilden", "Policy, Beleg und Trace oberhalb des Transports"]}
+      }
+    }
+  ]
+}

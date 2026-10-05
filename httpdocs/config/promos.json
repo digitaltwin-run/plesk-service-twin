@@ -1,0 +1,28 @@
+{
+  "promos": {
+    "NOCC100": {
+      "code": "NOCC100",
+      "discount_percent": 100,
+      "requires_card": false,
+      "description": "100% zniżki — Zakup 0 EUR bez karty płatniczej"
+    },
+    "FREEDEV": {
+      "code": "FREEDEV",
+      "discount_percent": 100,
+      "requires_card": false,
+      "description": "Darmowa licencja deweloperska NOCC"
+    },
+    "PARTNER2026": {
+      "code": "PARTNER2026",
+      "discount_percent": 50,
+      "requires_card": true,
+      "description": "50% zniżki partnerskiej"
+    },
+    "TRIAL30": {
+      "code": "TRIAL30",
+      "discount_percent": 100,
+      "requires_card": false,
+      "description": "30 dni gratis (NOCC)"
+    }
+  }
+}

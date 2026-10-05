@@ -1,0 +1,1 @@
+{"event_id":"evt_7af7ded2316fadbc","event_type":"TenantRegistered","aggregate_id":"probe-tenant","payload":{"email":"probe@subactor.com","tenant_slug":"probe-tenant","plan":"saas-business","interval":"month","amount_minor":5900,"requires_card":true,"promo_code":"NOCC100","ref_code":null,"state":"active","nocc_checkout":false},"timestamp":"2026-08-15T14:41:28+00:00"}

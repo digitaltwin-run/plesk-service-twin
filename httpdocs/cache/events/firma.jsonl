@@ -1,0 +1,1 @@
+{"event_id":"evt_511e9a330d07bd0c","event_type":"TenantRegistered","aggregate_id":"firma","payload":{"email":"emailonly-1786871072465@firma.pl","tenant_slug":"firma","plan":"saas-start","interval":"month","amount_minor":9700,"requires_card":true,"promo_code":null,"ref_code":null,"state":"active","nocc_checkout":false},"timestamp":"2026-08-16T09:04:32+00:00"}

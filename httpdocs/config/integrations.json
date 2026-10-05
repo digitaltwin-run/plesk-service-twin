@@ -1,0 +1,345 @@
+{
+  "meta": {
+    "headline": "Integracje w cenie każdego planu",
+    "subheadline": "Łączymy Subactor z narzędziami, których już używasz. Żadna z tych integracji nie jest płatnym dodatkiem, żadna nie wymaga programisty po Twojej stronie.",
+    "status_labels": {
+      "available": "Dostępna",
+      "pilot": "Pilotaż z klientem",
+      "planned": "W planach"
+    },
+    "source_note": "Katalog opisuje konektory istniejące w urirun-connectors. Pole connector jest wewnętrzne i nie jest pokazywane klientowi.",
+    "connect_labels": {
+      "token": "Podłącz tokenem",
+      "oauth": "Zaloguj się u dostawcy",
+      "contact": "Porozmawiajmy",
+      "none": "Działa bez konfiguracji"
+    }
+  },
+  "integrations": [
+    {
+      "id": "marketplace-sync",
+      "name": "Sprzedaż na Allegro, Amazon i eBay",
+      "category": "Sprzedaż",
+      "status": "available",
+      "for_whom": "Sklepy sprzedające na kilku platformach naraz",
+      "promise": "Zamówienia ze wszystkich platform spływają w jedno miejsce, a stany i ceny wracają na nie automatycznie.",
+      "outcomes": [
+        "Koniec z przepisywaniem zamówień do arkusza i ręcznym pilnowaniem stanów",
+        "Zmiana ceny albo stanu w jednym miejscu rozchodzi się na wszystkie kanały sprzedaży",
+        "Każda zmiana pokazuje się najpierw jako podgląd — na żywo idzie dopiero po Twojej akceptacji"
+      ],
+      "connector": "urirun-connector-baselinker",
+      "connect": {
+        "method": "token",
+        "docs_url": "https://api.baselinker.com/",
+        "fields": [
+          {
+            "key": "api_token",
+            "label": "Token API BaseLinker",
+            "help": "Panel BaseLinker → Moje konto → API → dodaj token",
+            "secret": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ksef",
+      "name": "e-Faktury w KSeF",
+      "category": "Księgowość",
+      "status": "available",
+      "for_whom": "Każda firma objęta obowiązkowym e-fakturowaniem",
+      "promise": "Wystawiasz i odbierasz faktury w Krajowym Systemie e-Faktur bez kupowania osobnego programu.",
+      "outcomes": [
+        "Wysyłka faktury do KSeF i automatyczne pobranie numeru oraz potwierdzenia UPO",
+        "Pobieranie faktur zakupowych wystawionych na Twój NIP",
+        "Środowisko testowe do przećwiczenia procesu, zanim przełączysz się na produkcję"
+      ],
+      "connector": "urirun-connector-ksef",
+      "connect": {
+        "method": "token",
+        "docs_url": "https://ksef.mf.gov.pl/",
+        "fields": [
+          {
+            "key": "nip",
+            "label": "NIP firmy",
+            "help": "Dziesięć cyfr, bez myślników",
+            "secret": false
+          },
+          {
+            "key": "ksef_token",
+            "label": "Token KSeF",
+            "help": "Wygenerowany w aplikacji podatnika KSeF",
+            "secret": true
+          },
+          {
+            "key": "environment",
+            "label": "Środowisko",
+            "help": "test, demo albo prod",
+            "secret": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "document-intake",
+      "name": "Faktury i dokumenty ze skanów",
+      "category": "Księgowość",
+      "status": "available",
+      "for_whom": "Firmy, które dostają faktury mailem i w papierze",
+      "promise": "Ze skanu albo PDF-a same wychodzą kwoty, NIP kontrahenta i termin płatności.",
+      "outcomes": [
+        "Odczyt zdjęć i skanów bez przepisywania danych z faktury",
+        "Rozpoznanie pól faktury i przekazanie ich dalej do księgowości",
+        "Wykrywanie duplikatów, żeby ta sama faktura nie weszła dwa razy"
+      ],
+      "connector": "urirun-connector-invoice + ocr + doc + docid",
+      "connect": {
+        "method": "token",
+        "fields": [
+          {
+            "key": "inbox_address",
+            "label": "Adres skrzynki na dokumenty",
+            "help": "Skrzynka, na którą kontrahenci wysyłają faktury",
+            "secret": false
+          },
+          {
+            "key": "inbox_password",
+            "label": "Hasło skrzynki",
+            "help": "Zalecane hasło aplikacji, nie hasło główne",
+            "secret": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "mailbox",
+      "name": "Skrzynka e-mail i kalendarz",
+      "category": "Codzienna praca",
+      "status": "available",
+      "for_whom": "Zespoły, w których poczta jest głównym kanałem zamówień",
+      "promise": "Subactor czyta firmową skrzynkę i kalendarz, więc procesy startują same z tego, co przyszło mailem.",
+      "outcomes": [
+        "Automatyczne uruchomienie procesu, gdy przyjdzie zamówienie albo faktura",
+        "Terminy i spotkania widoczne w tym samym miejscu co zadania",
+        "Działa z Twoją obecną pocztą — nie trzeba jej przenosić"
+      ],
+      "connector": "urirun-connector-email + calendar",
+      "connect": {
+        "method": "oauth",
+        "provider": "google",
+        "provider_label": "Google Workspace",
+        "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth",
+        "client_id_env": "GOOGLE_CLIENT_ID",
+        "scopes": [
+          "https://www.googleapis.com/auth/gmail.readonly",
+          "https://www.googleapis.com/auth/calendar.readonly"
+        ]
+      }
+    },
+    {
+      "id": "notifications",
+      "name": "Powiadomienia dla zespołu",
+      "category": "Codzienna praca",
+      "status": "available",
+      "for_whom": "Zespoły pracujące na Slacku, Teams albo Signalu",
+      "promise": "Ważne zdarzenia trafiają tam, gdzie zespół i tak patrzy — bez logowania się do kolejnego panelu.",
+      "outcomes": [
+        "Wiadomość na kanale zespołu, gdy proces się zatrzyma albo wymaga decyzji",
+        "Osobne kanały dla sprzedaży, magazynu i księgowości",
+        "Nikt nie musi pilnować panelu, żeby wiedzieć, że coś poszło nie tak"
+      ],
+      "connector": "urirun-connector-slack + teams + signal",
+      "connect": {
+        "method": "token",
+        "fields": [
+          {
+            "key": "webhook_url",
+            "label": "Adres webhooka",
+            "help": "Slack, Teams albo Signal — wklej adres z ustawień kanału",
+            "secret": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "sheets",
+      "name": "Arkusze i raporty PDF",
+      "category": "Codzienna praca",
+      "status": "available",
+      "for_whom": "Firmy, które raportują w Excelu i wysyłają PDF-y",
+      "promise": "Dane wchodzą i wychodzą w formatach, których już używasz — bez zmiany przyzwyczajeń zespołu.",
+      "outcomes": [
+        "Import z XLSX i CSV oraz eksport wyników w tym samym formacie",
+        "Gotowe raporty PDF do wysłania klientowi albo księgowej",
+        "Bez instalowania pakietu biurowego na serwerze"
+      ],
+      "connector": "urirun-connector-sheet + pdf + document",
+      "connect": {
+        "method": "none"
+      }
+    },
+    {
+      "id": "ai-accounts",
+      "name": "Konta AI pod kontrolą",
+      "category": "Sztuczna inteligencja",
+      "status": "available",
+      "for_whom": "Firmy, w których kilka osób korzysta z narzędzi AI",
+      "promise": "Wiesz, kto używa jakich narzędzi AI i ile to realnie kosztuje.",
+      "outcomes": [
+        "Jedno zestawienie wszystkich firmowych kont AI zamiast subskrypcji, o których nikt nie pamięta",
+        "Każde konto pracuje osobno, więc dane jednego klienta nie mieszają się z innym",
+        "Model dobierany do zadania, żeby nie płacić najdroższą stawką za prostą pracę"
+      ],
+      "connector": "urirun-connector-llm + LLM Account Hub",
+      "connect": {
+        "method": "token",
+        "fields": [
+          {
+            "key": "provider",
+            "label": "Dostawca",
+            "help": "anthropic, openai albo google",
+            "secret": false
+          },
+          {
+            "key": "api_key",
+            "label": "Klucz API",
+            "help": "Klucz z panelu dostawcy",
+            "secret": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "hosting",
+      "name": "Hosting i publikacja stron",
+      "category": "IT",
+      "status": "available",
+      "for_whom": "Firmy z własnym serwerem lub kontem Plesk",
+      "promise": "Zmiana na stronie albo w aplikacji trafia na serwer jednym poleceniem, z możliwością cofnięcia.",
+      "outcomes": [
+        "Publikacja bez ręcznego wgrywania plików przez FTP",
+        "Sprawdzenie przed wdrożeniem, czy nic nie zasłoni strony i nie wycieknie plik konfiguracyjny",
+        "Poprzednia wersja odkładana na bok, więc powrót zajmuje chwilę"
+      ],
+      "connector": "urirun-connector-plesk + deploy",
+      "connect": {
+        "method": "token",
+        "fields": [
+          {
+            "key": "panel_url",
+            "label": "Adres panelu Plesk",
+            "help": "Na przykład https://serwer.pl:8443",
+            "secret": false
+          },
+          {
+            "key": "api_key",
+            "label": "Klucz API Plesk",
+            "help": "Plesk → Narzędzia i ustawienia → Klucze API",
+            "secret": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "monitoring",
+      "name": "Monitoring stron i domen",
+      "category": "IT",
+      "status": "available",
+      "for_whom": "Każdy, kto traci pieniądze, gdy strona nie odpowiada",
+      "promise": "Dowiadujesz się o niedostępnej stronie albo wygasającej domenie od nas, a nie od klienta.",
+      "outcomes": [
+        "Stały nadzór nad dostępnością stron i sklepów",
+        "Ostrzeżenie przed wygaśnięciem domeny i certyfikatu",
+        "Zmiany w DNS wykonywane z jednego miejsca"
+      ],
+      "connector": "urirun-connector-domain-monitor + http-check + namecheap-dns",
+      "connect": {
+        "method": "token",
+        "fields": [
+          {
+            "key": "domains",
+            "label": "Domeny do obserwacji",
+            "help": "Oddzielone przecinkami",
+            "secret": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "repos",
+      "name": "Repozytoria kodu",
+      "category": "IT",
+      "status": "available",
+      "for_whom": "Firmy z własnym zespołem programistów lub software housem",
+      "promise": "Zadania, wydania i zgłoszenia z GitHuba, GitLaba, Gitei i Bitbucketu w jednym obiegu.",
+      "outcomes": [
+        "Jeden proces niezależnie od tego, gdzie zespół trzyma kod",
+        "Wydania i zgłoszenia powiązane ze zdarzeniami biznesowymi",
+        "Historia zmian dostępna do audytu"
+      ],
+      "connector": "urirun-connector-forge + github + gitlab + gitea + bitbucket",
+      "connect": {
+        "method": "oauth",
+        "provider": "github",
+        "provider_label": "GitHub",
+        "authorize_url": "https://github.com/login/oauth/authorize",
+        "client_id_env": "GITHUB_CLIENT_ID",
+        "scopes": [
+          "repo",
+          "read:org"
+        ]
+      }
+    },
+    {
+      "id": "esign",
+      "name": "Podpis elektroniczny",
+      "category": "Księgowość",
+      "status": "pilot",
+      "for_whom": "Firmy podpisujące umowy i protokoły zdalnie",
+      "promise": "Umowa idzie do podpisu i wraca podpisana, bez drukowania i kuriera.",
+      "outcomes": [
+        "Wysyłka dokumentu do podpisu prosto z procesu",
+        "Niezależność od jednego dostawcy podpisu",
+        "Komplet podpisanych dokumentów w jednym miejscu"
+      ],
+      "connector": "urirun-connector-esign",
+      "connect": {
+        "method": "contact"
+      }
+    },
+    {
+      "id": "voice",
+      "name": "Telefon i SMS",
+      "category": "Codzienna praca",
+      "status": "pilot",
+      "for_whom": "Firmy potwierdzające zamówienia telefonicznie",
+      "promise": "Połączenie albo wiadomość wychodzi automatycznie w miejscu, gdzie proces tego wymaga.",
+      "outcomes": [
+        "Potwierdzenie dostawy albo wizyty bez dzwonienia ręcznie",
+        "Każde połączenie odnotowane przy zamówieniu",
+        "Ruch planowany przed wykonaniem, więc nic nie wyjdzie przypadkiem"
+      ],
+      "connector": "urirun-connector-twilio-voice",
+      "connect": {
+        "method": "contact"
+      }
+    },
+    {
+      "id": "erp-handoff",
+      "name": "Przekazanie do systemu magazynowego",
+      "category": "Sprzedaż",
+      "status": "planned",
+      "for_whom": "Firmy pracujące na Subiekcie, wFirmie lub podobnym systemie",
+      "promise": "Zamówienia trafią do Twojego systemu magazynowego bez pośrednictwa arkusza.",
+      "outcomes": [
+        "Dziś: przekazanie przez BaseLinker albo eksport do pliku",
+        "W planach: bezpośrednie połączenie z Subiektem i wFirmą",
+        "Termin ustalamy z pierwszymi klientami, którzy tego potrzebują"
+      ],
+      "connector": null,
+      "connect": {
+        "method": "contact"
+      }
+    }
+  ]
+}

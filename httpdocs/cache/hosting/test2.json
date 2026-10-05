@@ -1,0 +1,12 @@
+{
+    "subdomain": "test2.sub.actor",
+    "phase": "planned",
+    "reason": null,
+    "openwebui_url": "http:\/\/127.0.0.1:3004\/",
+    "plan_hash": "7f3a64b8a27314744ab17140472c7d77bec0bb27400ee5144a1eedcd161faad1",
+    "applicable": false,
+    "blockers": [
+        "apply_gates_closed"
+    ],
+    "planned_at": "2026-08-16T22:08:05+00:00"
+}

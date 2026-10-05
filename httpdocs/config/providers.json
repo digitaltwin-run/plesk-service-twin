@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "default_provider": "paypal",
+    "note": "Rejestr dostawców płatności. Twin czyta ten sam plik co portal, więc dodanie dostawcy to edycja konfiguracji, a nie nowy serwer.",
+    "twin_entrypoint": "test/twins/payment-twin.mjs",
+    "card_data_policy": "Twin akceptuje wyłącznie numery testowe zadeklarowane poniżej. Prawdziwy PAN jest odrzucany błędem real_pan_rejected."
+  },
+  "test_cards": {
+    "4242424242424242": { "outcome": "approved", "brand": "visa", "label": "Płatność zaakceptowana" },
+    "5555555555554444": { "outcome": "approved", "brand": "mastercard", "label": "Płatność zaakceptowana" },
+    "4000000000000002": { "outcome": "declined", "code": "card_declined", "label": "Odmowa wydawcy" },
+    "4000000000009995": { "outcome": "declined", "code": "insufficient_funds", "label": "Brak środków" },
+    "4000000000000069": { "outcome": "declined", "code": "expired_card", "label": "Karta wygasła" },
+    "4000000000000127": { "outcome": "declined", "code": "incorrect_cvc", "label": "Błędny kod CVC" },
+    "4000000000003220": { "outcome": "requires_action", "code": "three_d_secure_required", "label": "Wymagane 3-D Secure" }
+  },
+  "providers": {
+    "paypal": {
+      "id": "paypal",
+      "name": "PayPal",
+      "default": true,
+      "status": "available",
+      "twin_port": 8793,
+      "twin_shape": "paypal",
+      "external_twin": "/home/tom/github/digitaltwin-run/paypal-service-twin/src/server.mjs",
+      "live_base_url": "https://api-m.sandbox.paypal.com",
+      "env": {
+        "mode": "PAYMENT_MODE",
+        "base_url": "PAYPAL_BASE_URL",
+        "client_id": "PAYPAL_CLIENT_ID",
+        "client_secret": "PAYPAL_CLIENT_SECRET",
+        "webhook_id": "PAYPAL_WEBHOOK_ID"
+      },
+      "capabilities": ["order", "capture", "subscription", "webhook_signature", "card", "three_d_secure"],
+      "currencies": ["EUR", "USD", "GBP", "PLN"],
+      "notes": "Domyślny dostawca. Karta obsługiwana przez Advanced Card Payments; twin symuluje pole karty i challenge 3DS."
+    },
+    "stripe": {
+      "id": "stripe",
+      "name": "Stripe",
+      "default": false,
+      "status": "twin-only",
+      "twin_port": 8794,
+      "twin_shape": "stripe",
+      "live_base_url": "https://api.stripe.com",
+      "env": {
+        "mode": "PAYMENT_MODE",
+        "base_url": "STRIPE_BASE_URL",
+        "client_id": "STRIPE_PUBLISHABLE_KEY",
+        "client_secret": "STRIPE_SECRET_KEY",
+        "webhook_id": "STRIPE_WEBHOOK_SECRET"
+      },
+      "capabilities": ["payment_intent", "capture", "subscription", "webhook_signature", "card", "three_d_secure"],
+      "currencies": ["EUR", "USD", "GBP", "PLN", "CHF"],
+      "notes": "Najkrótsza droga do kart dla klientów spoza PayPala. Wymaga własnych kluczy przed włączeniem."
+    },
+    "przelewy24": {
+      "id": "przelewy24",
+      "name": "Przelewy24",
+      "default": false,
+      "status": "twin-only",
+      "twin_port": 8795,
+      "twin_shape": "przelewy24",
+      "live_base_url": "https://secure.przelewy24.pl/api/v1",
+      "env": {
+        "mode": "PAYMENT_MODE",
+        "base_url": "P24_BASE_URL",
+        "client_id": "P24_MERCHANT_ID",
+        "client_secret": "P24_API_KEY",
+        "webhook_id": "P24_CRC_KEY"
+      },
+      "capabilities": ["transaction_register", "verify", "webhook_signature", "card", "blik"],
+      "currencies": ["PLN", "EUR"],
+      "notes": "Dla polskich mikro i małych firm: karta plus BLIK. Twin symuluje rejestrację transakcji i weryfikację."
+    }
+  }
+}

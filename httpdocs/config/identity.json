@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "note": "Adding a provider is a block here, not code. The flow is one OAuth2 authorization-code exchange with PKCE for every entry.",
+    "redirect_path": "/auth/{provider}/callback",
+    "state_cookie": "subactor_oauth",
+    "state_ttl_seconds": 600,
+    "tenant_from": "email_domain"
+  },
+  "providers": {
+    "google": {
+      "id": "google",
+      "label": "Google",
+      "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth",
+      "token_url": "https://oauth2.googleapis.com/token",
+      "userinfo_url": "https://openidconnect.googleapis.com/v1/userinfo",
+      "scopes": [
+        "openid",
+        "email",
+        "profile"
+      ],
+      "client_id_env": "GOOGLE_CLIENT_ID",
+      "client_secret_env": "GOOGLE_CLIENT_SECRET",
+      "claims": {
+        "email": "email",
+        "name": "name",
+        "subject": "sub",
+        "verified": "email_verified"
+      },
+      "require_verified_email": true,
+      "pkce": true
+    },
+    "github": {
+      "id": "github",
+      "label": "GitHub",
+      "authorize_url": "https://github.com/login/oauth/authorize",
+      "token_url": "https://github.com/login/oauth/access_token",
+      "userinfo_url": "https://api.github.com/user",
+      "userinfo_email_url": "https://api.github.com/user/emails",
+      "scopes": [
+        "read:user",
+        "user:email"
+      ],
+      "client_id_env": "GITHUB_CLIENT_ID",
+      "client_secret_env": "GITHUB_CLIENT_SECRET",
+      "claims": {
+        "email": "email",
+        "name": "name",
+        "subject": "id"
+      },
+      "pkce": false
+    },
+    "microsoft": {
+      "id": "microsoft",
+      "label": "Microsoft 365",
+      "authorize_url": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "token_url": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "userinfo_url": "https://graph.microsoft.com/oidc/userinfo",
+      "scopes": [
+        "openid",
+        "email",
+        "profile"
+      ],
+      "client_id_env": "MICROSOFT_CLIENT_ID",
+      "client_secret_env": "MICROSOFT_CLIENT_SECRET",
+      "claims": {
+        "email": "email",
+        "name": "name",
+        "subject": "sub"
+      },
+      "pkce": true
+    },
+    "twin": {
+      "id": "twin",
+      "label": "Identity Twin (dev)",
+      "authorize_url": "http://127.0.0.1:8798/authorize",
+      "token_url": "http://127.0.0.1:8798/token",
+      "userinfo_url": "http://127.0.0.1:8798/userinfo",
+      "scopes": [
+        "openid",
+        "email"
+      ],
+      "client_id_env": "TWIN_CLIENT_ID",
+      "client_secret_env": "TWIN_CLIENT_SECRET",
+      "claims": {
+        "email": "email",
+        "name": "name",
+        "subject": "sub",
+        "verified": "email_verified"
+      },
+      "require_verified_email": true,
+      "pkce": true,
+      "dev_only": true,
+      "dev_credentials": {
+        "client_id": "subactor-dev"
+      }
+    }
+  }
+}

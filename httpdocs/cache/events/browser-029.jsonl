@@ -1,0 +1,1 @@
+{"event_id":"evt_8129cbaaf4e0d20c","event_type":"TenantRegistered","aggregate_id":"browser-029","payload":{"email":"browser-029@example.com","tenant_slug":"browser-029","plan":"saas-start","interval":"month","amount_minor":0,"requires_card":false,"promo_code":"NOCC100","ref_code":null,"state":"active","nocc_checkout":true},"timestamp":"2026-08-13T11:46:04+00:00"}

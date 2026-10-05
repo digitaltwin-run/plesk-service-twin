@@ -1,0 +1,1 @@
+{"event_id":"evt_54548a389ce98f12","event_type":"TenantRegistered","aggregate_id":"panel-demo","payload":{"email":"panel@firma.pl","tenant_slug":"panel-demo","plan":"saas-business","interval":"month","amount_minor":0,"requires_card":false,"promo_code":"NOCC100","ref_code":null,"state":"active","nocc_checkout":true},"timestamp":"2026-08-12T18:33:31+00:00"}

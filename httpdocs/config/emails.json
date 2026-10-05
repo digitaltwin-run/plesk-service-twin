@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "signature": "Zespół Subactor\nhttps://sub.actor",
+    "note": "Treść wiadomości transakcyjnych. {{placeholder}} podstawiane przez EmailNotificationService."
+  },
+  "templates": {
+    "onboarding_nocc": {
+      "to": "client",
+      "subject": "Konto {{tenant}} jest aktywne",
+      "body": "Dzień dobry,\n\nkonto dla organizacji {{tenant}} zostało uruchomione w planie {{plan_name}}.\n\nCo dalej:\n- zaloguj się na {{login_url}} podając ten adres e-mail i identyfikator organizacji {{tenant}},\n- podłącz integracje, z których korzystasz na co dzień,\n- kartę płatniczą podajesz dopiero wtedy, gdy zdecydujesz się przejść na plan płatny.\n\nDostęp uruchomiliśmy z kodem {{promo_code}}, więc na tym etapie nie ponosisz żadnych kosztów.\n\nJeśli coś nie działa, wystarczy odpowiedzieć na tę wiadomość."
+    },
+    "onboarding_pending_payment": {
+      "to": "client",
+      "subject": "Konto {{tenant}} czeka na pierwszą płatność",
+      "body": "Dzień dobry,\n\nkonto dla organizacji {{tenant}} zostało założone w planie {{plan_name}} ({{amount}} {{period}}).\n\nAby je uruchomić, pozostaje opłacić pierwszy okres rozliczeniowy. Cena nie zawiera opłaty wdrożeniowej ani żadnych dopłat — płacisz wyłącznie za stanowiska.\n\nZaloguj się na {{login_url}}, podając ten adres e-mail i identyfikator organizacji {{tenant}}.\n\nJeśli wolisz najpierw sprawdzić platformę bez płatności, odpowiedz na tę wiadomość — uruchomimy dostęp próbny."
+    },
+    "onpremise_lead_client": {
+      "to": "client",
+      "subject": "Zapytanie o wdrożenie On-Premise przyjęte",
+      "body": "Dzień dobry,\n\ndziękujemy za zapytanie o wdrożenie On-Premise dla {{tenant}}.\n\nOdezwiemy się w ciągu 24 godzin roboczych, żeby ustalić termin i zakres. Cena licencji jest jawna i nie podlega negocjacji: {{amount}} jednorazowo, a po pierwszym roku 490,00 € rocznie za aktualizacje i wsparcie.\n\nNa rozmowę przygotuj informację o docelowej liczbie stanowisk i o tym, gdzie ma stanąć instalacja."
+    },
+    "lead_internal": {
+      "to": "sales",
+      "subject": "[Subactor] Nowe zgłoszenie: {{tenant}} ({{plan_id}})",
+      "body": "Nowe zgłoszenie z portalu.\n\nOrganizacja:  {{tenant}}\nE-mail:       {{email}}\nPlan:         {{plan_name}} ({{plan_id}})\nKwota:        {{amount}} {{period}}\nStatus:       {{status}}\nKod promo:    {{promo_code}}\nPolecenie:    {{ref_code}}\nZdarzenie:    {{event_id}}\n\nSprawdź w panelu zdarzeń, zanim się odezwiesz."
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "base_domain": "sub.actor",
+  "parent_webspace": "sub.actor",
+  "subdomain_pattern": "{tenant}.{base}",
+  "reserved_subdomains": ["www", "api", "admin", "panel", "mail", "app", "static", "cdn", "test", "dev", "staging"],
+  "panel": {
+    "base_url": "http://127.0.0.1:8796",
+    "plan_path": "/api/v2/subdomains/plan",
+    "apply_path": "/api/v2/subdomains/apply",
+    "list_path": "/api/v2/subdomains",
+    "webspaces_path": "/api/v2/webspaces",
+    "timeout_seconds": 8
+  },
+  "gates": {
+    "note": "Mirrors urirun-connector-plesk: apply is refused unless every gate is set and the caller replays the exact hash of a plan this process issued.",
+    "mutation_gate_env": "AUTONOMY_MUTATIONS_ENABLED",
+    "subdomain_gate_env": "PLESK_SUBDOMAIN_APPLY",
+    "apply_default": false
+  },
+  "multidomain": {
+    "note": "One Plesk account (API/SSH) owns many subscriptions. This SaaS pattern is one subscription hosting tenant subdomains; other products use other subscriptions under the same account. Limits come from the live subscription, not from a single hardcoded domain.",
+    "account_inventory": "../../inventory/account-subscriptions.json",
+    "max_subdomains_env": "PLESK_MAX_SUBDOMAINS",
+    "max_subdomains_default": 100,
+    "docroot_pattern": "/var/www/vhosts/{base}/{tenant}",
+    "php_handler": "php-8.3-fpm"
+  }
+}

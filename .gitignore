@@ -1,0 +1,4 @@
+node_modules/
+.httpdocs-private-backup/
+*.log
+.env

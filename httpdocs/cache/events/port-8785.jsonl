@@ -1,0 +1,1 @@
+{"event_id":"evt_fdeadec463bf5d45","event_type":"TenantRegistered","aggregate_id":"port-8785","payload":{"email":"port8785@example.com","tenant_slug":"port-8785","plan":"saas-start","interval":"month","amount_minor":0,"requires_card":false,"promo_code":"NOCC100","ref_code":null,"state":"active","nocc_checkout":true},"timestamp":"2026-08-13T11:45:27+00:00"}

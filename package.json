@@ -1,0 +1,16 @@
+{
+  "name": "@digitaltwin/plesk-service-twin",
+  "version": "0.1.0",
+  "description": "Digital Twin simulator and pre-deploy validator for Plesk hosting environments",
+  "type": "module",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start": "docker compose up -d",
+    "stop": "docker compose down",
+    "test": "node test/preflight.test.mjs",
+    "preflight": "node src/preflight.mjs",
+    "publish:dry-run": "node src/publish.mjs --dry-run",
+    "publish:apply": "node src/publish.mjs --apply"
+  },
+  "license": "Proprietary"
+}
